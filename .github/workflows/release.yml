@@ -12,7 +12,7 @@ jobs:
     if: ${{ github.actor == 'dependabot[bot]' }}
     steps:
       - run: echo "PR created by Dependabot"
-      
+
   docker:
     runs-on: ubuntu-latest
     steps:
@@ -32,8 +32,10 @@ jobs:
             type=semver,pattern={{major}}.{{minor}}
             type=semver,pattern={{major}}
 
-      - name: 'Echo Tags'
-        run: echo "a ${{ secrets.DOCKERHUB_USERNAME }}" | sed 's/ //g'
+      - name: 'Echo'
+        run: echo "a ${{ secrets.DOCKERHUB_USERNAME }}"
+        run: echo "a ${{ github.actor }}"
+
       - name: Login to Docker Hub
         uses: docker/login-action@v4
         with:
