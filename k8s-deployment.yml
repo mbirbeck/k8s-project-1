@@ -1,0 +1,39 @@
+---
+apiVersion: apps/v1
+kind: Deployment                 # Type of Kubernetes resource
+metadata:
+  name: project-1-deployment           # Name of the Kubernetes resource
+spec:
+  replicas: 1                    # Number of pods to run at any given time
+  selector:
+    matchLabels:
+      app: project-1-app        # This deployment applies to any Pods matching the specified label
+  template:                      # This deployment will create a set of pods using the configurations in this template
+    metadata:
+      labels:                    # The labels that will be applied to all of the pods in this deployment
+        app: project-1-app 
+    spec:                        # Spec for the container which will run in the Pod
+      containers:
+      - name: project-1-container
+        image: docker.io/mbirbeck/project-1-image:v1
+        imagePullPolicy: IfNotPresent
+        ports:
+          - containerPort: 8080  # Should match the port number that the Go application listens on
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8080
+          initialDelaySeconds: 3
+          periodSeconds: 3
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: project-1-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: project-1-app
+  ports:
+  - port: 5678        # What the client conects to (service level)
+    targetPort: 8080  # What the app listens on (container level)
