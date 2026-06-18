@@ -34,7 +34,7 @@ func main() {
 
 	// Start the HTTP server.
 	go func() {
-		log.Printf("Server tutorial is listening on %s\n", srv.Addr)
+		log.Printf("Server is listening on %s\n", srv.Addr)
 		srvErrCh <- srv.ListenAndServe()
 	}()
 
