@@ -33,7 +33,6 @@ jobs:
             type=semver,pattern={{major}}
 
       - name: 'Echo'
-        run: echo "a ${{ secrets.DOCKERHUB_USERNAME }}"
         run: echo "b ${{ github.actor }}"
 
       - name: Login to Docker Hub
