@@ -6,13 +6,6 @@ on:
       - '*'
 
 jobs:
-
-  check-dependabot:
-    runs-on: ubuntu-latest
-    if: ${{ github.actor == 'dependabot[bot]' }}
-    steps:
-      - run: echo "PR created by Dependabot"
-
   docker:
     runs-on: ubuntu-latest
     steps:
@@ -50,6 +43,7 @@ jobs:
         name: Build and push
         uses: docker/build-push-action@v7
         with:
+          platforms: linux/arm64,linux/amd64
           context: .
           push: true
           tags: ${{ steps.meta.outputs.tags }}
