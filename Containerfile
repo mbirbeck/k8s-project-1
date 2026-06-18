@@ -1,12 +1,11 @@
-FROM golang:1.25-alpine AS builder
+FROM golang:1.26.4-alpine AS builder
 WORKDIR /app
-COPY go.mod ./
+COPY . .
 RUN go mod download
-COPY *.go ./
-RUN go build -o project-1-app
+RUN CGO_ENABLED=0 go build -o project-1-app
 
 FROM alpine:latest 
 WORKDIR /app
 COPY --from=builder /app/project-1-app .
 EXPOSE 8080
-CMD [ "sh", "-c", "/app/project-1-app"]
+ENTRYPOINT ["/app/project-1-app"]
