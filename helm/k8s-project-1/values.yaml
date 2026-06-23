@@ -5,7 +5,7 @@
 replicaCount: 2
 
 image:
-  repository: docker.io/mbirbeck/project-1-image
+  repository: docker.io/mbirbeck/k8s-project-1
   pullPolicy: IfNotPresent
   tag: ""
 
