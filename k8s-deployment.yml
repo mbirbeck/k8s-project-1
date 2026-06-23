@@ -15,7 +15,7 @@ spec:
     spec:                        # Spec for the container which will run in the Pod
       containers:
       - name: project-1-container
-        image: docker.io/mbirbeck/project-1-image:v1
+        image: docker.io/mbirbeck/project-1-image
         imagePullPolicy: IfNotPresent
         ports:
           - containerPort: 8080  # Should match the port number that the Go application listens on
