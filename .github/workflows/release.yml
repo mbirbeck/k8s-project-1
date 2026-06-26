@@ -40,7 +40,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v7
         with:
-          platforms: linux/arm64
+          platforms: linux/arm64 #ß TODO add amd64?
           context: .
           push: true
           tags: ${{ steps.meta.outputs.tags }}
