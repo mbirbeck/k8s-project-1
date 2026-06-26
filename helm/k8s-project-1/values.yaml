@@ -2,24 +2,23 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
+app: k8s-project-1-app
 replicaCount: 2
-
 image:
   repository: docker.io/mbirbeck/k8s-project-1
   pullPolicy: IfNotPresent
   tag: ""
-
-app: project-1-app
-
-service:
-  type: LoadBalancer
-  port: 5678
-  targetPort: 8080
-
 livenessProbe:
   httpGet:
     path: /health
     port: 8080
   initialDelaySeconds: 3
   periodSeconds: 3
+
+service:
+  type: LoadBalancer
+  port: 5678
+  targetPort: 8080
+
+
 
