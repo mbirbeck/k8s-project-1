@@ -2,7 +2,7 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-app: k8s-project-1-app
+appName: k8s-project-1-app
 replicaCount: 2
 image:
   repository: docker.io/mbirbeck/k8s-project-1

@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "k8s-project-1.fullname" . }}
+  name: {{ .Values.app }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: {{ .Values.app }}
+      appName: {{ .Values.appName }}
   template:
     metadata:
       labels:
-        app: {{ .Values.app }}
+        appName: {{ .Values.appName }}
     spec:
       containers:
         - name: {{ .Chart.Name }}
