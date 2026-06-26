@@ -72,7 +72,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 		name = "Guest"
 	}
 	log.Printf("Received request for %s\n", name)
-	fmt.Fprintf(w, "Hello, %s! v0.0.40\n", name)
+	fmt.Fprintf(w, "Hello, %s! mattn", name)
 }
 
 func healthHandler(w http.ResponseWriter, r *http.Request) {
